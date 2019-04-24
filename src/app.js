@@ -22,7 +22,7 @@ const accounts = data.accounts
 
 // const userData = fs.readFileSync(path.join(__dirname, 'json', 'users.json'), 'utf8');
 
- const users = data.users
+const users = data.users
 
 app.get('/', (req, res) => res.render('index', {title: "Account Summary", accounts: accounts}));
 
@@ -45,7 +45,7 @@ app.post('/payment', (req, res) => {
     //gives you back your credit
     accounts.credit.available += parseInt(req.body.amount)
 
-    writeJSON();
+    data.writeJSON();
 
     res.render('payment', {message: "Payment Successful", account: accounts.credit})
 
@@ -59,10 +59,11 @@ app.post('/transfer', (req, res) => {
     // const accountsJSON = JSON.stringify(accounts);
     // fs.writeFileSync(path.join(__dirname, 'json/accounts.json'), accountsJSON, 'utf8');
   
-    writeJSON();
+   data.writeJSON();
 
    res.render('transfer', {message: "Transfer Completed"});
 
 })
+
 app.listen(3000, () => console.log('PS Project Running on Port 3000'));
 
