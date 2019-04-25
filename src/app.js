@@ -35,6 +35,8 @@ app.use('/services', servicesRoutes)
 
 app.get('/', (req, res) => res.render('index', {title: "Account Summary", accounts: accounts}));
 
+app.get('/profile', (req, res) => res.render('profile', {user: users[0] }));
+
 
 app.listen(3000, () => console.log('PS Project Running on Port 3000'));
 
